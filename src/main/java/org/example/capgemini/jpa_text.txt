@@ -1,0 +1,68 @@
+
+@Getter
+@Setter
+@Entity
+class Employee{
+
+	private Long id;
+	private String name;
+	private String department;
+	
+}
+
+
+@RestController
+@RequestMapping("employee")
+class EmployeeController{
+
+    @Autowired
+	private EmployeeService employeeService;
+	
+	@GetMapping("/getAllEmpDetails")
+	public ResponseEntity<List<Employee>> fetchAllEmployee(){
+	
+		List<Employee> emp = employeeService.fetchAllEmployee();
+		
+		ResponseEntity.ok(emp);
+	}
+}
+
+
+@Service
+class EmployeeService{
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	public List<Employee> fetchAllEmployee(){
+	
+		return employeeRepository.findAll();
+	}
+	
+	
+	public List<Employee> fetchDetailsByDep(){
+	
+		
+		List<Employee> empList = employeeRepository.findAll();
+		
+		empList.stream()
+		.collect(Collectors.groupingBy(Employee::getDepartment,
+		Collectors.counting()));
+		
+		employeeRepository.findAll()
+    .stream()
+    .collect(Collectors.groupingBy(
+        Employee::getDepartment,
+        Collectors.counting()
+    ));
+	}
+	
+
+}
+
+@Repository
+class EmployeeRepository extends JpaRepository<Employee,Long>{
+
+	
+
+}

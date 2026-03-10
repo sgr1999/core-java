@@ -1,4 +1,4 @@
-package org.example;
+package org.example.tata_nexarc;
 
 import java.util.HashMap;
 
