@@ -2,9 +2,9 @@ package org.example;
 
 import java.util.HashMap;
 
-public class Main {
-    public static void main(String[] args) {
+public class TataNexarc {
 
+    public static void main(String[] args) {
         String str = "abababacSagar";
 
         HashMap<Character,Integer> map = new HashMap<>();
@@ -28,4 +28,13 @@ public class Main {
 //    where m.subject = 'Math'
 //    order by m.marks desc
 //    limit 2;
+
+//    select s.student_id,
+//    rank() over (order by sum(m.marks) desc) as rank
+//    from student_info s join marks m
+//    on s.student_id = m.student_id
+//    where s.class = 5
+//    group by s.student_id
+//    order by rank;
+
 }
