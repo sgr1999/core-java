@@ -11,6 +11,15 @@ public class TataNexarc {
         int maxLength = 0;
         int start = 0;
 
+//        int maxLength = 3;
+//        int start = 7;
+//        end = 9
+//        c = c
+
+//        a = 9
+//        b = 5
+//        c = 7
+//        S = 8
         for (int end =0; end < str.length(); end++){
             char c = str.charAt(end);
             if (map.containsKey(c)){
